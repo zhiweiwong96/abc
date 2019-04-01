@@ -194,6 +194,9 @@ public class SettingsActivity extends AppCompatActivity {
         if(radioButton.getText() == null){
             return;
         }
+
+        userSex = radioButton.getText().toString();
+
         age = mAge.getText().toString();
         race = mRace.getSelectedItem().toString();
         interest = mInterest.getSelectedItem().toString();
@@ -205,6 +208,7 @@ public class SettingsActivity extends AppCompatActivity {
         userInfo.put("name",name);
         userInfo.put("phone",phone);
         //add on
+        userInfo.put("sex",userSex);
         userInfo.put("age",age);
         userInfo.put("race",race);
         userInfo.put("interest",interest);

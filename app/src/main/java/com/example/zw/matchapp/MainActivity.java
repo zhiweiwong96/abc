@@ -114,7 +114,7 @@ public class MainActivity extends AppCompatActivity {
     private void isConnectionMatch(String userId) {
         System.out.println("Inside isConnectionMatch");
 
-        DatabaseReference currentUserConnectionDb = usersDb.child(currentUId).child("connections").child("yeps").child(userId);
+        DatabaseReference currentUserConnectionDb = usersDb.child(currentUId).child("connection").child("yeps").child(userId);
 
         //DatabaseReference currentUserConnectionDb = usersDb.child(userId).child("connections").child("yeps").child(currentUId);
         /*
@@ -136,6 +136,7 @@ public class MainActivity extends AppCompatActivity {
                     usersDb.child(currentUId).child("connections").child("matches").child(dataSnapshot.getKey()).setValue(true);
                     System.out.println("Match should be created successfully");
                 }else{
+                    //why not exists
                     System.out.println("dataSnapshot not exist");
                 }
             }
