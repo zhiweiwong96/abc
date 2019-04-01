@@ -11,9 +11,13 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
+import android.widget.Spinner;
 
 import com.bumptech.glide.Glide;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -36,16 +40,22 @@ import java.util.Map;
 
 public class SettingsActivity extends AppCompatActivity {
 
+    private Spinner mRace, mInterest, mEducation, mHoroscope;
+    private EditText mAge;
+
     private EditText mNameField, mPhoneField;
 
     private Button mBack, mConfirm;
+
+    private RadioGroup mRadioGroup;
+    private RadioButton mRadioButton;
 
     private ImageView mProfileImage;
 
     private FirebaseAuth mAuth;
     private DatabaseReference mUserDatabase;
 
-    private String userId, name, phone, profileImageUrl, userSex;
+    private String userId, name, phone, profileImageUrl, userSex, race, interest, education, horoscope, age;
 
     private Uri resultUri;
 
@@ -54,6 +64,15 @@ public class SettingsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
 
+        mAge = findViewById(R.id.age);
+        mRace = findViewById(R.id.race);
+        mInterest = findViewById(R.id.interest);
+        mEducation = findViewById(R.id.education);
+        mHoroscope = findViewById(R.id.horoscope);
+
+        mRadioButton = findViewById(R.id.male);
+
+        mRadioGroup = findViewById(R.id.radioGroup);
         mNameField = findViewById(R.id.name);
         mPhoneField =  findViewById(R.id.phone);
         mProfileImage =  findViewById(R.id.profileImage);
@@ -100,12 +119,48 @@ public class SettingsActivity extends AppCompatActivity {
                         mNameField.setText(name);
                     }
                     if(map.get("phone") != null){
-                        name = map.get("phone").toString();
+                        phone = map.get("phone").toString();
                         mPhoneField.setText(phone);
                     }
                     if(map.get("sex") != null){
                         userSex = map.get("sex").toString();
+
+                        System.out.println("UserSex = "+ userSex);
+                        if(userSex.equals("Male")){
+                            mRadioGroup.check(R.id.male);
+                        }else{
+                            mRadioGroup.check(R.id.female);
+                        }
                     }
+
+                    // add on
+                    if(map.get("age")!=null){
+                        age = map.get("age").toString();
+                        mAge.setText(age);
+                    }
+
+                    if(map.get("race")!=null){
+                        race = map.get("race").toString();
+                        //set spinner value
+                        mRace.setSelection(((ArrayAdapter)mRace.getAdapter()).getPosition(race));
+                    }
+                    if(map.get("interest")!=null){
+                        interest = map.get("interest").toString();
+                        //set spinner value
+                        mInterest.setSelection(((ArrayAdapter)mInterest.getAdapter()).getPosition(interest));
+                    }
+                    if(map.get("education")!=null){
+                        education = map.get("education").toString();
+                        //set spinner value
+                        mEducation.setSelection(((ArrayAdapter)mEducation.getAdapter()).getPosition(education));
+                    }
+                    if(map.get("horoscope")!=null){
+                        horoscope = map.get("horoscope").toString();
+                        //set spinner value
+                        mHoroscope.setSelection(((ArrayAdapter)mHoroscope.getAdapter()).getPosition(horoscope));
+                    }
+
+
                     Glide.clear(mProfileImage);
                     if(map.get("profileImageUrl") != null){
                         profileImageUrl = map.get("profileImageUrl").toString();
@@ -133,9 +188,28 @@ public class SettingsActivity extends AppCompatActivity {
         name = mNameField.getText().toString();
         phone = mPhoneField.getText().toString();
 
+        //add on
+        int selectId = mRadioGroup.getCheckedRadioButtonId();
+        final RadioButton radioButton = findViewById(selectId);
+        if(radioButton.getText() == null){
+            return;
+        }
+        age = mAge.getText().toString();
+        race = mRace.getSelectedItem().toString();
+        interest = mInterest.getSelectedItem().toString();
+        education = mEducation.getSelectedItem().toString();
+        horoscope = mHoroscope.getSelectedItem().toString();
+
+
         Map userInfo = new HashMap<>();
         userInfo.put("name",name);
         userInfo.put("phone",phone);
+        //add on
+        userInfo.put("age",age);
+        userInfo.put("race",race);
+        userInfo.put("interest",interest);
+        userInfo.put("education",education);
+        userInfo.put("horoscope",horoscope);
 
         mUserDatabase.updateChildren(userInfo);
         if(resultUri != null){

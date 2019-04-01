@@ -20,7 +20,6 @@ public class MatchesViewHolders extends RecyclerView.ViewHolder implements View.
         mMatchName =  itemView.findViewById(R.id.MatchName);
         mMatchImage =  itemView.findViewById(R.id.MatchImage);
 
-
     }
 
     @Override

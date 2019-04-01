@@ -23,7 +23,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Filter"
-                    android:onClick="logoutUser"/>
+                    android:onClick="goToFilter"/>
 
                 <Button
                     android:layout_weight="1"

@@ -113,7 +113,16 @@ public class MainActivity extends AppCompatActivity {
 
     private void isConnectionMatch(String userId) {
         System.out.println("Inside isConnectionMatch");
+
         DatabaseReference currentUserConnectionDb = usersDb.child(currentUId).child("connections").child("yeps").child(userId);
+
+        //DatabaseReference currentUserConnectionDb = usersDb.child(userId).child("connections").child("yeps").child(currentUId);
+        /*
+
+        DatabaseReference oppUserConnectionDb = usersDb.child(userId).child("connections").child("yeps").child(currentUId);
+
+        */
+
         currentUserConnectionDb.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -121,6 +130,7 @@ public class MainActivity extends AppCompatActivity {
 
                 if(dataSnapshot.exists()){
                     Toast.makeText(MainActivity.this, "new Connection", Toast.LENGTH_LONG).show();
+
                     //when both of them swipe right for each other, create matches
                     usersDb.child(dataSnapshot.getKey()).child("connections").child("matches").child(currentUId).setValue(true);
                     usersDb.child(currentUId).child("connections").child("matches").child(dataSnapshot.getKey()).setValue(true);
@@ -149,6 +159,21 @@ public class MainActivity extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 if(dataSnapshot.exists()){
                     userSex = dataSnapshot.child("sex").getValue().toString();
+                    //add prefer sex
+                    /*
+
+                    preferSex = dataSnapshot.child("preferSex").getValue().toString();
+
+                    //set preferSex on creation of acc
+
+                        if (preferSex = "Male"){
+                            oppUserSex = "Male"
+                        }else{
+                            oppUserSex = "Female"
+                        }
+
+                     */
+
                     switch (userSex){
                         case "Male":
                             oppUserSex = "Female";
@@ -224,6 +249,12 @@ public class MainActivity extends AppCompatActivity {
 
     public void goToMatches(View view){
         Intent intent = new Intent(MainActivity.this, MatchesActivity.class);
+        startActivity(intent);
+        return;
+    }
+
+    public void goToFilter(View view){
+        Intent intent = new Intent(MainActivity.this, FilterActivity.class);
         startActivity(intent);
         return;
     }
