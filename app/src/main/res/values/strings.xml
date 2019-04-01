@@ -56,5 +56,31 @@
         <item>70 – 100</item>
     </string-array>
 
+    <string name="religion_prompt">Choose a religion</string>
+    <string-array name="religion_arrays">
+        <item>Islam</item>
+        <item>Buddhism</item>
+        <item>Christianity</item>
+        <item>Hinduism</item>
+        <item>Confucianism</item>
+        <item>Taoism</item>item>
+    </string-array>
+
+    <string name="states_prompt">Choose a states</string>
+    <string-array name="states_arrays">
+        <item>Johor</item>
+        <item>Kedah</item>
+        <item>Kelantan</item>
+        <item>Malacca</item>
+        <item>Negeri Sembilan</item>
+        <item>Pahang</item>
+        <item>Penang</item>
+        <item>Perak</item>
+        <item>Perlis</item>
+        <item>Sabah</item>
+        <item>Sarawak</item>
+        <item>Selangor</item>
+        <item>Terengganu</item>
+    </string-array>
 
 </resources>

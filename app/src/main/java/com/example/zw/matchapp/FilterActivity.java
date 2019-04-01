@@ -13,6 +13,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
+import android.widget.Spinner;
 
 import com.bumptech.glide.Glide;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -38,11 +41,18 @@ public class FilterActivity extends AppCompatActivity {
 
     private Button mBack, mConfirm;
 
-
     private FirebaseAuth mAuth;
     private DatabaseReference mUserDatabase;
 
-    private String userId, userSex;
+    private String userId, oppUserSex, race, interest, education, horoscope, age ,religion ,state;
+
+
+    private Spinner mRace, mInterest, mEducation, mHoroscope, mReligion, mState;
+    private EditText mAge;
+
+    private EditText mNameField, mPhoneField;
+    private RadioGroup mRadioGroup;
+    private RadioButton mRadioButton;
 
 
     @Override

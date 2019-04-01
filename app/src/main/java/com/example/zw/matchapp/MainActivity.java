@@ -116,13 +116,6 @@ public class MainActivity extends AppCompatActivity {
 
         DatabaseReference currentUserConnectionDb = usersDb.child(currentUId).child("connection").child("yeps").child(userId);
 
-        //DatabaseReference currentUserConnectionDb = usersDb.child(userId).child("connections").child("yeps").child(currentUId);
-        /*
-
-        DatabaseReference oppUserConnectionDb = usersDb.child(userId).child("connections").child("yeps").child(currentUId);
-
-        */
-
         currentUserConnectionDb.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {

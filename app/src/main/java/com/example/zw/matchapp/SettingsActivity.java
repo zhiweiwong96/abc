@@ -40,7 +40,7 @@ import java.util.Map;
 
 public class SettingsActivity extends AppCompatActivity {
 
-    private Spinner mRace, mInterest, mEducation, mHoroscope;
+    private Spinner mRace, mInterest, mEducation, mHoroscope, mReligion, mState;
     private EditText mAge;
 
     private EditText mNameField, mPhoneField;
@@ -55,7 +55,7 @@ public class SettingsActivity extends AppCompatActivity {
     private FirebaseAuth mAuth;
     private DatabaseReference mUserDatabase;
 
-    private String userId, name, phone, profileImageUrl, userSex, race, interest, education, horoscope, age;
+    private String userId, name, phone, profileImageUrl, userSex, race, interest, education, horoscope, age ,religion ,state;
 
     private Uri resultUri;
 
@@ -69,6 +69,8 @@ public class SettingsActivity extends AppCompatActivity {
         mInterest = findViewById(R.id.interest);
         mEducation = findViewById(R.id.education);
         mHoroscope = findViewById(R.id.horoscope);
+        mReligion = findViewById(R.id.religion);
+        mState = findViewById(R.id.states);
 
         mRadioButton = findViewById(R.id.male);
 
@@ -138,7 +140,6 @@ public class SettingsActivity extends AppCompatActivity {
                         age = map.get("age").toString();
                         mAge.setText(age);
                     }
-
                     if(map.get("race")!=null){
                         race = map.get("race").toString();
                         //set spinner value
@@ -158,6 +159,16 @@ public class SettingsActivity extends AppCompatActivity {
                         horoscope = map.get("horoscope").toString();
                         //set spinner value
                         mHoroscope.setSelection(((ArrayAdapter)mHoroscope.getAdapter()).getPosition(horoscope));
+                    }
+                    if(map.get("religion")!=null){
+                        religion = map.get("religion").toString();
+                        //set spinner value
+                        mReligion.setSelection(((ArrayAdapter)mReligion.getAdapter()).getPosition(religion));
+                    }
+                    if(map.get("state")!=null){
+                        state = map.get("state").toString();
+                        //set spinner value
+                        mState.setSelection(((ArrayAdapter)mState.getAdapter()).getPosition(state));
                     }
 
 
@@ -202,6 +213,8 @@ public class SettingsActivity extends AppCompatActivity {
         interest = mInterest.getSelectedItem().toString();
         education = mEducation.getSelectedItem().toString();
         horoscope = mHoroscope.getSelectedItem().toString();
+        religion = mReligion.getSelectedItem().toString();
+        state = mState.getSelectedItem().toString();
 
 
         Map userInfo = new HashMap<>();
@@ -214,6 +227,8 @@ public class SettingsActivity extends AppCompatActivity {
         userInfo.put("interest",interest);
         userInfo.put("education",education);
         userInfo.put("horoscope",horoscope);
+        userInfo.put("religion",religion);
+        userInfo.put("state",state);
 
         mUserDatabase.updateChildren(userInfo);
         if(resultUri != null){
