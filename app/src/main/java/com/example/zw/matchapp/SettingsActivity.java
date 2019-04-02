@@ -111,7 +111,6 @@ public class SettingsActivity extends AppCompatActivity {
                 startActivityForResult(intent, 1);
                 */
 
-
                 Intent intent = new Intent();
                 intent.setType("image/*");
                 intent.setAction(Intent.ACTION_GET_CONTENT);
@@ -312,14 +311,14 @@ public class SettingsActivity extends AppCompatActivity {
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        /*
+
         super.onActivityResult(requestCode, resultCode, data);
-        if(requestCode == 1 && resultCode == Activity.RESULT_OK){
-            final Uri imageUri = data.getData();
-            resultUri = imageUri;
+        if(requestCode == PICK_IMAGE_REQUEST && resultCode == Activity.RESULT_OK && data != null && data.getData() != null){
+            resultUri = data.getData();
             mProfileImage.setImageURI(resultUri);
         }
-        */
+
+        /*
         super.onActivityResult(requestCode, resultCode, data);
         if(requestCode == PICK_IMAGE_REQUEST && resultCode == Activity.RESULT_OK && data != null && data.getData() != null){
             resultUri = data.getData();
@@ -331,6 +330,7 @@ public class SettingsActivity extends AppCompatActivity {
             }
 
         }
+        */
     }
 
 
