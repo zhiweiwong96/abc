@@ -4,10 +4,14 @@ public class MatchesObject {
     private String userId;
     private String name;
     private String profileImageUrl;
-    public MatchesObject (String userId, String name, String profileImageUrl){
+
+    private String phone;
+
+    public MatchesObject (String userId, String name, String profileImageUrl,String phone){
         this.userId = userId;
         this.name = name;
         this.profileImageUrl = profileImageUrl;
+        this.phone = phone;
     }
 
     public String getUserId(){
@@ -22,5 +26,13 @@ public class MatchesObject {
 
     public String getName(){ return name;}
     public void setName(String name){this.name = name;}
+
+    public String getPhone(){
+        return phone;
+    }
+
+    public void setPhone(String phone){
+        this.phone = phone;
+    }
 
 }

@@ -12,13 +12,17 @@ public class MatchesViewHolders extends RecyclerView.ViewHolder implements View.
     public TextView mMatchId, mMatchName;
     public ImageView mMatchImage;
 
+    //add phone
+    public TextView mMatchPhone;
+
     public MatchesViewHolders(@NonNull View itemView) {
         super(itemView);
         itemView.setOnClickListener(this);
 
-        mMatchId =  itemView.findViewById(R.id.Matchid);
+        //mMatchId =  itemView.findViewById(R.id.Matchid);
         mMatchName =  itemView.findViewById(R.id.MatchName);
         mMatchImage =  itemView.findViewById(R.id.MatchImage);
+        mMatchPhone = itemView.findViewById(R.id.MatchPhone);
 
     }
 
