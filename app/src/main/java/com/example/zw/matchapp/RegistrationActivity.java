@@ -27,8 +27,8 @@ public class RegistrationActivity extends AppCompatActivity {
     private EditText mEmail, mPassword, mName;
     private RadioGroup mRadioGroup;
 
-    //add phone
-    private EditText mPhone;
+    //add phone and age
+    private EditText mPhone,mAge;
 
     private FirebaseAuth mAuth;
     private FirebaseAuth.AuthStateListener firebaseAuthStateListener;
@@ -58,6 +58,7 @@ public class RegistrationActivity extends AppCompatActivity {
         mPassword = findViewById(R.id.password);
         mRadioGroup = findViewById(R.id.radioGroup);
         mPhone = findViewById(R.id.phone);
+        mAge = findViewById(R.id.age);
 
         mRegister.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -74,6 +75,7 @@ public class RegistrationActivity extends AppCompatActivity {
                 final String email = mEmail.getText().toString();
                 final String password = mPassword.getText().toString();
                 final String phone = mPhone.getText().toString();
+                final String age = mAge.getText().toString();
                 mAuth.createUserWithEmailAndPassword(email,password).addOnCompleteListener(RegistrationActivity.this, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
@@ -88,6 +90,7 @@ public class RegistrationActivity extends AppCompatActivity {
                             userInfo.put("sex",radioButton.getText().toString());
                             userInfo.put("profileImageUrl","default");
                             userInfo.put("phone",phone);
+                            userInfo.put("age",age);
 
                             currentUserDb.updateChildren(userInfo);
                         }
