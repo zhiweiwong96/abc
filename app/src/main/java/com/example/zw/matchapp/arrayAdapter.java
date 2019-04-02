@@ -31,13 +31,17 @@ public class arrayAdapter extends ArrayAdapter<cards>{
         TextView name = convertView.findViewById(R.id.name);
         ImageView image = convertView.findViewById(R.id.image);
 
+        System.out.println("Image URL = " + card_item.getProfileImageUrl());
+
         name.setText(card_item.getName());
         switch(card_item.getProfileImageUrl()){
             case "default":
+                System.out.println("--------------Dont have PROFILE IMAGE---------------");
                 Glide.with(convertView.getContext()).load(R.mipmap.ic_launcher).into(image);
                 break;
             default:
                 Glide.clear(image);
+                System.out.println("--------------GOT PROFILE IMAGE---------------");
                 Glide.with(convertView.getContext()).load(card_item.getProfileImageUrl()).into(image);
                 break;
         }

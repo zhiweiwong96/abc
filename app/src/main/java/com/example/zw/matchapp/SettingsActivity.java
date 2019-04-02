@@ -2,6 +2,7 @@ package com.example.zw.matchapp;
 
 
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
@@ -18,11 +19,14 @@ import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -34,6 +38,7 @@ import com.google.firebase.storage.UploadTask;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
@@ -55,9 +60,14 @@ public class SettingsActivity extends AppCompatActivity {
     private FirebaseAuth mAuth;
     private DatabaseReference mUserDatabase;
 
+    //add image
+    private FirebaseStorage storage;
+    private StorageReference storageReference;
+
     private String userId, name, phone, profileImageUrl, userSex, race, interest, education, horoscope, age ,religion ,state;
 
     private Uri resultUri;
+    private final int PICK_IMAGE_REQUEST = 71;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -85,14 +95,28 @@ public class SettingsActivity extends AppCompatActivity {
         userId = mAuth.getCurrentUser().getUid();
         mUserDatabase = FirebaseDatabase.getInstance().getReference().child("Users").child(userId);
 
+        //add image
+        storage = FirebaseStorage.getInstance();
+        storageReference = storage.getReference();
+
         getUserInfo();
 
         mProfileImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+                /*
                 Intent intent = new Intent(Intent.ACTION_PICK);
                 intent.setType("image/*");
                 startActivityForResult(intent, 1);
+                */
+
+
+                Intent intent = new Intent();
+                intent.setType("image/*");
+                intent.setAction(Intent.ACTION_GET_CONTENT);
+                startActivityForResult(Intent.createChooser(intent,"Select Picture"),PICK_IMAGE_REQUEST);
+
             }
         });
         mConfirm.setOnClickListener(new View.OnClickListener() {
@@ -171,8 +195,6 @@ public class SettingsActivity extends AppCompatActivity {
                         mState.setSelection(((ArrayAdapter)mState.getAdapter()).getPosition(state));
                     }
 
-
-                    Glide.clear(mProfileImage);
                     if(map.get("profileImageUrl") != null){
                         profileImageUrl = map.get("profileImageUrl").toString();
                         switch(profileImageUrl){
@@ -266,6 +288,8 @@ public class SettingsActivity extends AppCompatActivity {
                             newImage.put("profileImageUrl", uri.toString());
                             mUserDatabase.updateChildren(newImage);
 
+                            System.out.println("Update image successful");
+
                             finish();
                             return;
                         }
@@ -282,15 +306,51 @@ public class SettingsActivity extends AppCompatActivity {
         }else{
             finish();
         }
+
+        //uploadImage();
     }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        /*
         super.onActivityResult(requestCode, resultCode, data);
         if(requestCode == 1 && resultCode == Activity.RESULT_OK){
             final Uri imageUri = data.getData();
             resultUri = imageUri;
             mProfileImage.setImageURI(resultUri);
         }
+        */
+        super.onActivityResult(requestCode, resultCode, data);
+        if(requestCode == PICK_IMAGE_REQUEST && resultCode == Activity.RESULT_OK && data != null && data.getData() != null){
+            resultUri = data.getData();
+            try{
+                Bitmap bitmap  = MediaStore.Images.Media.getBitmap(getContentResolver(),resultUri);
+                mProfileImage.setImageBitmap(bitmap);
+            }catch(IOException e){
+                e.printStackTrace();
+            }
+
+        }
     }
+
+
+    /*
+    private void uploadImage(){
+        if (resultUri != null){
+            final ProgressDialog progressDialog = new ProgressDialog(this);
+            progressDialog.setTitle("uploading ...");
+            progressDialog.show();
+
+            StorageReference filepath = FirebaseStorage.getInstance().getReference().child("profileImages").child(userId);
+
+            filepath.putFile(resultUri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                @Override
+                public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                    progressDialog.dismiss();
+                    Toast.makeText(SettingsActivity.this,"Uploaded",Toast.LENGTH_SHORT ).show();
+                }
+            });
+        }
+    }
+    */
 }

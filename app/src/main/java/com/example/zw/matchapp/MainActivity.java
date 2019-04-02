@@ -27,7 +27,7 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity {
 
     private cards cards_data[];
-    private arrayAdapter arrayAdapter;
+    private com.example.zw.matchapp.arrayAdapter arrayAdapter;
     private int i;
 
     private FirebaseAuth mAuth;
