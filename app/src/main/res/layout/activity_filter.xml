@@ -7,247 +7,295 @@
     tools:context=".FilterActivity"
     tools:layout_editor_absoluteY="81dp">
 
-    <TextView
-        android:id="@+id/title"
-        android:layout_width="0dp"
+    <LinearLayout
+        android:id="@+id/linearLayout1"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:fontFamily="sans-serif"
-        android:text=" Filter Your Potential Partner"
-        android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/textView4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="101dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="64dp"
-        android:text=" Gender"
-        app:layout_constraintEnd_toStartOf="@+id/radioGroup2"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <RadioGroup
-        android:id="@+id/radioGroup2"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="10dp"
-        android:layout_marginEnd="18dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="92dp"
+        android:gravity="center"
         android:orientation="horizontal"
-        app:layout_constraintBottom_toTopOf="@+id/age"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/textView4">
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
-        <RadioButton
-            android:id="@+id/radioButton"
+        <TextView
+            android:id="@+id/textView4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Male" />
+            android:layout_marginRight="80dp"
+            android:text="Gender"
+            tools:layout_editor_absoluteX="16dp"
+            tools:layout_editor_absoluteY="64dp" />
 
-        <RadioButton
-            android:id="@+id/radioButton2"
+        <RadioGroup
+            android:id="@+id/radioGroup2"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            tools:layout_editor_absoluteX="166dp"
+            tools:layout_editor_absoluteY="63dp">
+
+            <RadioButton
+                android:id="@+id/radioButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Male" />
+
+            <RadioButton
+                android:id="@+id/radioButton2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Female" />
+        </RadioGroup>
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:id="@+id/linearLayout2"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="56dp"
+        android:gravity="center"
+        android:orientation="horizontal"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/textView2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Female" />
-    </RadioGroup>
+            android:layout_marginRight="102dp"
+            android:text="Age"
+            tools:layout_editor_absoluteX="16dp"
+            tools:layout_editor_absoluteY="106dp" />
 
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="wrap_content"
+        <Spinner
+            android:id="@+id/age"
+            android:layout_width="201dp"
+            android:layout_height="wrap_content"
+            android:entries="@array/age_arrays"
+            android:prompt="@string/age_prompt"
+            tools:layout_editor_absoluteX="168dp"
+            tools:layout_editor_absoluteY="105dp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout3"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="124dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="23dp"
-        android:text=" Age"
-        app:layout_constraintEnd_toStartOf="@+id/age"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="132dp"
+        android:gravity="center"
+        android:orientation="horizontal"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView4" />
+        app:layout_constraintTop_toTopOf="parent">
 
-    <TextView
-        android:id="@+id/textView5"
-        android:layout_width="wrap_content"
+        <TextView
+            android:id="@+id/textView5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="95dp"
+            android:text="Race"
+            tools:layout_editor_absoluteX="16dp"
+            tools:layout_editor_absoluteY="135dp" />
+
+        <Spinner
+            android:id="@+id/race"
+            android:layout_width="201dp"
+            android:layout_height="wrap_content"
+            android:entries="@array/race_arrays"
+            android:prompt="@string/race_prompt"
+            tools:layout_editor_absoluteX="168dp"
+            tools:layout_editor_absoluteY="135dp" />
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:id="@+id/linearLayout4"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="117dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="11dp"
-        android:text=" Race"
-        app:layout_constraintEnd_toStartOf="@+id/race"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="164dp"
+        android:gravity="center"
+        android:orientation="horizontal"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView2" />
+        app:layout_constraintTop_toTopOf="parent">
 
-    <Spinner
-        android:id="@+id/interest"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="16dp"
-        android:layout_marginTop="7dp"
-        android:entries="@array/interest_arrays"
-        android:prompt="@string/interest_prompt"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/textView6"
-        app:layout_constraintTop_toBottomOf="@+id/horoscope" />
+        <TextView
+            android:id="@+id/textView6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="79dp"
+            android:text="Interest"
+            tools:layout_editor_absoluteX="16dp"
+            tools:layout_editor_absoluteY="198dp" />
 
-    <TextView
-        android:id="@+id/textView6"
-        android:layout_width="wrap_content"
+        <Spinner
+            android:id="@+id/interest"
+            android:layout_width="201dp"
+            android:layout_height="wrap_content"
+            android:entries="@array/interest_arrays"
+            android:prompt="@string/interest_prompt"
+            tools:layout_editor_absoluteX="168dp"
+            tools:layout_editor_absoluteY="199dp" />
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:id="@+id/linearLayout5"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="100dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="12dp"
-        android:text=" Interest"
-        app:layout_constraintEnd_toStartOf="@+id/interest"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="260dp"
+        android:gravity="center"
+        android:orientation="horizontal"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView8" />
+        app:layout_constraintTop_toTopOf="parent">
 
-    <Spinner
-        android:id="@+id/education"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="16dp"
-        android:layout_marginTop="11dp"
-        android:entries="@array/education_arrays"
-        android:prompt="@string/education_prompt"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/textView7"
-        app:layout_constraintTop_toBottomOf="@+id/interest" />
+        <TextView
+            android:id="@+id/textView7"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="27dp"
+            android:text="Education Level"
+            tools:layout_editor_absoluteX="16dp"
+            tools:layout_editor_absoluteY="233dp" />
 
-    <TextView
-        android:id="@+id/textView7"
-        android:layout_width="wrap_content"
+        <Spinner
+            android:id="@+id/education"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:entries="@array/education_arrays"
+            android:prompt="@string/education_prompt"
+            tools:layout_editor_absoluteX="168dp"
+            tools:layout_editor_absoluteY="234dp" />
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:id="@+id/linearLayout6"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="50dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:text=" Education Level"
-        app:layout_constraintEnd_toStartOf="@+id/education"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="292dp"
+        android:gravity="center"
+        android:orientation="horizontal"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView6" />
+        app:layout_constraintTop_toTopOf="parent">
 
-    <Spinner
-        android:id="@+id/horoscope"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="16dp"
-        android:layout_marginTop="9dp"
-        android:entries="@array/horoscope_arrays"
-        android:prompt="@string/horoscope_prompt"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/textView8"
-        app:layout_constraintTop_toBottomOf="@+id/race" />
+        <TextView
+            android:id="@+id/textView8"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="58dp"
+            android:text="Horoscope"
+            tools:layout_editor_absoluteX="16dp"
+            tools:layout_editor_absoluteY="168dp" />
 
-    <TextView
-        android:id="@+id/textView8"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="83dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="14dp"
-        android:text="Horoscope"
-        app:layout_constraintEnd_toStartOf="@+id/horoscope"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView5" />
+        <Spinner
+            android:id="@+id/horoscope"
+            android:layout_width="201dp"
+            android:layout_height="wrap_content"
+            android:entries="@array/horoscope_arrays"
+            android:prompt="@string/horoscope_prompt"
+            tools:layout_editor_absoluteX="168dp"
+            tools:layout_editor_absoluteY="168dp" />
 
-    <Spinner
-        android:id="@+id/race"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="16dp"
-        android:layout_marginTop="6dp"
-        android:entries="@array/race_arrays"
-        android:prompt="@string/race_prompt"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/textView5"
-        app:layout_constraintTop_toBottomOf="@+id/age" />
+    </LinearLayout>
+
 
     <Button
         android:id="@+id/confirm"
-        android:layout_width="0dp"
+        android:layout_width="384dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_marginBottom="54dp"
+        android:layout_marginStart="8dp"
         android:text="confirm"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/back"
         app:layout_constraintStart_toStartOf="parent" />
 
 
     <Button
         android:id="@+id/back"
-        android:layout_width="0dp"
+        android:layout_width="384dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
+        android:layout_marginStart="8dp"
         android:text="back"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+
+    <LinearLayout
+        android:id="@+id/linearLayout7"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="196dp"
+        android:gravity="center"
+        android:orientation="horizontal"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/confirm" />
+        app:layout_constraintTop_toTopOf="parent">
 
+        <TextView
+            android:id="@+id/textView11"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="79dp"
+            android:text="Religion"
+            tools:layout_editor_absoluteX="16dp"
+            tools:layout_editor_absoluteY="264dp" />
 
-    <Spinner
-        android:id="@+id/age"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="105dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginTop="106dp"
-        android:entries="@array/age_arrays"
-        android:prompt="@string/age_prompt"
-        app:layout_constraintBottom_toTopOf="@+id/textView7"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/textView2"
-        app:layout_constraintTop_toTopOf="parent" />
+        <Spinner
+            android:id="@+id/religion"
+            android:layout_width="201dp"
+            android:layout_height="wrap_content"
+            android:entries="@array/religion_arrays"
+            android:prompt="@string/religion_prompt"
+            tools:layout_editor_absoluteX="168dp"
+            tools:layout_editor_absoluteY="266dp" />
 
-    <TextView
-        android:id="@+id/textView11"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="103dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="13dp"
-        android:text="Religion"
-        app:layout_constraintEnd_toStartOf="@+id/religion"
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="228dp"
+        android:gravity="center"
+        android:orientation="horizontal"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView7" />
+        app:layout_constraintTop_toTopOf="parent">
 
-    <TextView
-        android:id="@+id/textView12"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="118dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="13dp"
-        android:text="State"
-        app:layout_constraintEnd_toStartOf="@+id/states"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView11" />
+        <TextView
+            android:id="@+id/textView12"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="93dp"
+            android:text="State"
+            tools:layout_editor_absoluteX="16dp"
+            tools:layout_editor_absoluteY="296dp" />
 
-    <Spinner
-        android:id="@+id/religion"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="16dp"
-        android:layout_marginTop="8dp"
-        android:entries="@array/religion_arrays"
-        android:prompt="@string/religion_prompt"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/textView11"
-        app:layout_constraintTop_toBottomOf="@+id/education" />
+        <Spinner
+            android:id="@+id/states"
+            android:layout_width="201dp"
+            android:layout_height="wrap_content"
+            android:entries="@array/states_arrays"
+            android:prompt="@string/states_prompt"
+            tools:layout_editor_absoluteX="168dp"
+            tools:layout_editor_absoluteY="298dp" />
 
-    <Spinner
-        android:id="@+id/states"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="16dp"
-        android:layout_marginTop="8dp"
-        android:entries="@array/states_arrays"
-        android:prompt="@string/states_prompt"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/textView12"
-        app:layout_constraintTop_toBottomOf="@+id/religion" />
+    </LinearLayout>
+
+
+
+
 
 
 </android.support.constraint.ConstraintLayout>

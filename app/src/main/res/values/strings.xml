@@ -3,6 +3,7 @@
     <string name="interest_prompt">Choose a interest</string>
 
     <string-array name="interest_arrays">
+        <item>Any</item>
         <item>Reading</item>
         <item>Writing</item>
         <item>Drawing</item>
@@ -15,6 +16,7 @@
 
     <string name="race_prompt">Choose a race</string>
     <string-array name="race_arrays">
+        <item>Any</item>
         <item>Malay</item>
         <item>Chinese</item>
         <item>India</item>
@@ -22,6 +24,7 @@
 
     <string name="horoscope_prompt">Choose a horoscope</string>
     <string-array name="horoscope_arrays">
+        <item>Any</item>
         <item>Aries</item>
         <item>Taurus</item>
         <item>Gemini</item>
@@ -38,6 +41,7 @@
 
     <string name="education_prompt">Choose a education level</string>
     <string-array name="education_arrays">
+        <item>Any</item>
         <item>High School</item>
         <item>Degree</item>
         <item>Master</item>
@@ -46,6 +50,7 @@
 
     <string name="age_prompt">Selecet age range</string>
     <string-array name="age_arrays">
+        <item>Any</item>
         <item>18 – 25</item>
         <item>26 – 30</item>
         <item>31 – 35</item>
@@ -58,6 +63,7 @@
 
     <string name="religion_prompt">Choose a religion</string>
     <string-array name="religion_arrays">
+        <item>Any</item>
         <item>Islam</item>
         <item>Buddhism</item>
         <item>Christianity</item>
@@ -68,6 +74,7 @@
 
     <string name="states_prompt">Choose a states</string>
     <string-array name="states_arrays">
+        <item>Any</item>
         <item>Johor</item>
         <item>Kedah</item>
         <item>Kelantan</item>
