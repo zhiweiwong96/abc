@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -31,13 +32,14 @@ public class MainActivity extends AppCompatActivity {
     private com.example.zw.matchapp.arrayAdapter arrayAdapter;
     private int i;
 
+    public Button checkProfile;
     private FirebaseAuth mAuth;
 
     private String currentUId;
 
     private DatabaseReference usersDb;
 
-    public String oppUserId;
+    public static String oppUserId;
 
     ListView listView;
     List<cards> rowItems;
@@ -51,6 +53,9 @@ public class MainActivity extends AppCompatActivity {
 
         mAuth = FirebaseAuth.getInstance();
         currentUId = mAuth.getCurrentUser().getUid();
+
+        checkProfile = findViewById(R.id.userProfile);
+        checkProfile.setVisibility(View.GONE);
 
         checkUserSex();
 
@@ -78,7 +83,8 @@ public class MainActivity extends AppCompatActivity {
                 cards obj = (cards) dataObject;
                 String userId = obj.getUserId();
                 usersDb.child(userId).child("connection").child("nope").child(currentUId).setValue(true);
-                Toast.makeText(MainActivity.this, "left", Toast.LENGTH_SHORT).show();
+                checkProfile.setVisibility(View.GONE);
+                Toast.makeText(MainActivity.this, "Dislike", Toast.LENGTH_SHORT).show();
             }
 
             @Override
@@ -89,7 +95,8 @@ public class MainActivity extends AppCompatActivity {
                 usersDb.child(userId).child("connection").child("yeps").child(currentUId).setValue(true);
                 isConnectionMatch(userId);
                 System.out.println("passed isConnectionMatch");
-                Toast.makeText(MainActivity.this, "right", Toast.LENGTH_SHORT).show();
+                checkProfile.setVisibility(View.GONE);
+                Toast.makeText(MainActivity.this, "Like", Toast.LENGTH_SHORT).show();
             }
 
             @Override
@@ -111,7 +118,7 @@ public class MainActivity extends AppCompatActivity {
                 cards obj = (cards) dataObject;
                 String userId = obj.getUserId();
                 oppUserId = userId;
-
+                checkProfile.setVisibility(View.VISIBLE);
                 Toast.makeText(MainActivity.this, "clicked", Toast.LENGTH_SHORT).show();
             }
         });
@@ -251,7 +258,7 @@ public class MainActivity extends AppCompatActivity {
     //opposite user profile
     public void goToUserProfile(View view){
         Intent intent = new Intent(MainActivity.this,UserProfile.class );
-        intent.putExtra("userId",oppUserId);
+        //intent.putExtra("userId",oppUserId);
         startActivity(intent);
         return;
     }
@@ -261,6 +268,11 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(MainActivity.this, DatingTips.class);
         startActivity(intent);
         return;
+    }
+
+    public static String getOppUserId()
+    {
+        return oppUserId;
     }
 
 }

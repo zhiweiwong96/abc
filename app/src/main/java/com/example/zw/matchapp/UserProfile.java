@@ -1,9 +1,16 @@
 package com.example.zw.matchapp;
 
+import android.app.Activity;
+import android.app.ProgressDialog;
+import android.content.Intent;
+import android.graphics.Bitmap;
 import android.net.Uri;
+import android.provider.MediaStore;
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -11,9 +18,14 @@ import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -21,13 +33,21 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
 
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.util.HashMap;
 import java.util.Map;
 
 public class UserProfile extends AppCompatActivity {
 
-    Bundle b = this.getIntent().getExtras();
-    String id = b.getString("userId");
+    //Bundle b = this.getIntent().getExtras();
+     //String id = b.getString("userId");
+
+    private static String id;
 
     private EditText mRace, mInterest, mEducation, mHoroscope, mReligion, mState;
     private EditText mAge,mGender;
@@ -44,7 +64,6 @@ public class UserProfile extends AppCompatActivity {
     private String userId, name, phone, profileImageUrl, userSex, race, interest, education, horoscope, age ,religion ,state;
     private Uri resultUri;
     private final int PICK_IMAGE_REQUEST = 71;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,13 +84,27 @@ public class UserProfile extends AppCompatActivity {
 
         mAuth = FirebaseAuth.getInstance();
         userId = mAuth.getCurrentUser().getUid();
+        id = MainActivity.getOppUserId();
+
         mUserDatabase = FirebaseDatabase.getInstance().getReference().child("Users").child(id);
 
         storage = FirebaseStorage.getInstance();
         storageReference = storage.getReference();
 
+        System.out.println(id);
+        System.out.println("Inside userProfile");
+
         getUserInfo();
+
+        mBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+                return;
+            }
+        });
     }
+
 
     private void getUserInfo() {
         mUserDatabase.addListenerForSingleValueEvent(new ValueEventListener() {
