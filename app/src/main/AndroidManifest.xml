@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.zw.matchapp">
 
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <application
         android:allowBackup="true"
@@ -23,7 +23,9 @@
         <activity android:name=".RegistrationActivity" />
         <activity android:name=".SettingsActivity" />
         <activity android:name=".MatchesActivity" />
-        <activity android:name=".FilterActivity"></activity>
+        <activity android:name=".FilterActivity" />
+        <activity android:name=".UserProfile" />
+        <activity android:name=".DatingTips"></activity>
     </application>
 
 </manifest>

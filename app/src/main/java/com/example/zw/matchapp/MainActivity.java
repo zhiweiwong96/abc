@@ -19,6 +19,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.firestore.auth.User;
 import com.lorentzos.flingswipe.SwipeFlingAdapterView;
 
 import java.util.ArrayList;
@@ -35,6 +36,8 @@ public class MainActivity extends AppCompatActivity {
     private String currentUId;
 
     private DatabaseReference usersDb;
+
+    public String oppUserId;
 
     ListView listView;
     List<cards> rowItems;
@@ -105,11 +108,17 @@ public class MainActivity extends AppCompatActivity {
         flingContainer.setOnItemClickListener(new SwipeFlingAdapterView.OnItemClickListener() {
             @Override
             public void onItemClicked(int itemPosition, Object dataObject) {
+                cards obj = (cards) dataObject;
+                String userId = obj.getUserId();
+                oppUserId = userId;
+
                 Toast.makeText(MainActivity.this, "clicked", Toast.LENGTH_SHORT).show();
             }
         });
 
     }
+
+
 
     private void isConnectionMatch(String userId) {
         System.out.println("Inside isConnectionMatch");
@@ -153,20 +162,6 @@ public class MainActivity extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 if(dataSnapshot.exists()){
                     userSex = dataSnapshot.child("sex").getValue().toString();
-                    //add prefer sex
-                    /*
-
-                    preferSex = dataSnapshot.child("preferSex").getValue().toString();
-
-                    //set preferSex on creation of acc
-
-                        if (preferSex = "Male"){
-                            oppUserSex = "Male"
-                        }else{
-                            oppUserSex = "Female"
-                        }
-
-                     */
 
                     switch (userSex){
                         case "Male":
@@ -249,6 +244,21 @@ public class MainActivity extends AppCompatActivity {
 
     public void goToFilter(View view){
         Intent intent = new Intent(MainActivity.this, FilterActivity.class);
+        startActivity(intent);
+        return;
+    }
+
+    //opposite user profile
+    public void goToUserProfile(View view){
+        Intent intent = new Intent(MainActivity.this,UserProfile.class );
+        intent.putExtra("userId",oppUserId);
+        startActivity(intent);
+        return;
+    }
+
+    //go to tips
+    public void goToTips(View view){
+        Intent intent = new Intent(MainActivity.this, DatingTips.class);
         startActivity(intent);
         return;
     }
