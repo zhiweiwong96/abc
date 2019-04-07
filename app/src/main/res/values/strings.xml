@@ -3,12 +3,11 @@
     <string name="interest_prompt">Choose a interest</string>
 
     <string-array name="interest_arrays">
-        <item>Any</item>
+        <item> - </item>
         <item>Reading</item>
         <item>Writing</item>
         <item>Drawing</item>
         <item>Travelling</item>
-        <item>Fishing</item>
         <item>Play Music</item>
         <item>Sports</item>
         <item>Photography</item>
@@ -16,7 +15,7 @@
 
     <string name="race_prompt">Choose a race</string>
     <string-array name="race_arrays">
-        <item>Any</item>
+        <item> - </item>
         <item>Malay</item>
         <item>Chinese</item>
         <item>India</item>
@@ -24,7 +23,7 @@
 
     <string name="horoscope_prompt">Choose a horoscope</string>
     <string-array name="horoscope_arrays">
-        <item>Any</item>
+        <item> - </item>
         <item>Aries</item>
         <item>Taurus</item>
         <item>Gemini</item>
@@ -41,7 +40,7 @@
 
     <string name="education_prompt">Choose a education level</string>
     <string-array name="education_arrays">
-        <item>Any</item>
+        <item> - </item>
         <item>High School</item>
         <item>Degree</item>
         <item>Master</item>
@@ -50,7 +49,7 @@
 
     <string name="age_prompt">Selecet age range</string>
     <string-array name="age_arrays">
-        <item>Any</item>
+        <item> - </item>
         <item>18 – 25</item>
         <item>26 – 30</item>
         <item>31 – 35</item>
@@ -63,7 +62,7 @@
 
     <string name="religion_prompt">Choose a religion</string>
     <string-array name="religion_arrays">
-        <item>Any</item>
+        <item> - </item>
         <item>Islam</item>
         <item>Buddhism</item>
         <item>Christianity</item>
@@ -77,7 +76,7 @@
     <string name="tips">#1 Meet often, but not too often When you’re in young love, you’d want to spend every waking minute with your sweetheart. It’s understandable, you’re obviously excited. But could you be pushing it too far? Remember that new workout dvd you picked up some time ago? You were probably really excited at the beginning, but as the daily workout took more and more time out of your daily routine, you started getting annoyed by it. It’s the same story with love. By meeting too often, you’re suddenly changing the lives of two individuals who have fallen in love. It may feel great for the first week or so, but eventually your other commitments may pile up and one of you may end up getting annoyed with the other for taking too much time. [Read: The story of a boyfriend who got clingy] Go out on dates once or twice a week, and it’ll keep the love and excitement on a high for a long time. But if you’re both madly in love and can’t keep your hands off each other, then you’re excused to meet each other more often, but with caution. #2 Don’t get clingy Just because you’re dating doesn’t mean you own each other. Shocking, yes, but it’s true. If you want to know how to have a good relationship from the beginning, learn to give each other space. Especially in a new relationship, you’re only dating each and don’t really need to know every little piece of information about each other. Right now, you’re only a small part of each other’s lives, so don’t give yourself more importance than you deserve. [Read: How to give space in a relationship] #3 Don’t be lavish with your gifts Your new lover may be running in your mind all day, but that doesn’t mean you should go overboard and buy something for your lover every time you see something nice while shopping. Save the spending sprees for later when the relationship has grown over a solid foundation. If you do want to express your love with gifts, then pick something small, personal and inexpensive at first. Save the extravagant gifts when you know your new mate’s the one for you. #4 Don’t push sex in too quickly In every new relationship, the horny-o-meter pointer may go into overdrive, just like your love-o-meter. But that doesn’t mean you should try and coerce your partner into having sex with you on the first or second date. Take it slow, and if both of you do end up having sex soon, so be it. But don’t try booking a hotel room or ask your new lover to slide over to the back seat for some heavy petting unless it happens without any preplanning. It could make your partner think you’re just in it for the sex and lead to loss of trust. #5 Don’t get possessive Possessiveness is never a good trait in a relationship. Possessiveness is a sign of insecurity and jealousy, and these are usually big red flags in any relationship, new or old. [Read: How to deal with relationship insecurity] Remember that you’re still in a new relationship and can’t order or even request your mate to avoid people or avoid going out by themselves. Even if you do feel jealous about your lover’s partying habits or the amount of time they spend with a group of friends, learn to suck it up and hold it in. Signs of jealousy and insecurity right at the beginning can end the relationship even before you know it. [Read: How to deal with jealousy in a relationship] #6 Accept each other’s habits When you fall in love with someone new, you fall in love with a person who’s unique, not a splitting image of your dream lover. Instead of trying to change them to fit your requirements, learn to adjust to their habits. By restricting a lover or trying to change someone at the very beginning, you risk the chance of losing them forever. Whether you’re in love or otherwise, you can’t really change someone’s personality. If you find your new lover incompatible, end the relationship instead of suffering a nervous breakdown due to frustrations or insecurities. #7 You don’t have to say I-Love-You Just because you’re in a relationship with your new lover, it doesn’t mean you have to start saying those “three magical words” to each other as soon as you decide to go out with each other. By saying it out first, you’re subtly coercing your partner into saying it back. And whether your new love says it back or not, it’s only going to lead to awkwardness in the air because it’s all happening so fast. Take it slow and wait a while, maybe a month or so before you say it out loud. #8 Don’t introduce your date to your friends too soon When you’re in a new relationship, you’re still exploring each other and learning about each other. Don’t call your friends over when your new lover’s with you or plan a group date just to show off your new catch. Though it’s not a bad thing to do, overwhelming your new lover with too much information at once can seem like too much, too fast. And if you do meet a friend when you’re on a date, introduce your date by the name and don’t really get into details. Your friends would understand the relationship status. And you’d save your date from an awkward situation, especially if they haven’t made up their mind on your relationship status. #9 Talk to each other When you’re in a new relationship, the bodily exploration may be the high point of every date that ends in a cozy corner or in one of your beds. But that doesn’t really help create a good relationship. Communication does. Try to sneak in a long conversation every now and then and learn about each other, likes, dislikes, interests and all. By doing this, it’ll help you figure the romantic compatibility and also help bring both of you closer on a level that’s beyond sexual attraction.</string>
 
     <string-array name="states_arrays">
-        <item>Any</item>
+        <item> - </item>
         <item>Johor</item>
         <item>Kedah</item>
         <item>Kelantan</item>

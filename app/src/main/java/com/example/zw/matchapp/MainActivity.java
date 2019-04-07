@@ -84,7 +84,7 @@ public class MainActivity extends AppCompatActivity {
                 String userId = obj.getUserId();
                 usersDb.child(userId).child("connection").child("nope").child(currentUId).setValue(true);
                 checkProfile.setVisibility(View.GONE);
-                Toast.makeText(MainActivity.this, "Dislike", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(MainActivity.this, "Disliked"+ userId, Toast.LENGTH_SHORT).show();
             }
 
             @Override
@@ -96,7 +96,7 @@ public class MainActivity extends AppCompatActivity {
                 isConnectionMatch(userId);
                 System.out.println("passed isConnectionMatch");
                 checkProfile.setVisibility(View.GONE);
-                Toast.makeText(MainActivity.this, "Like", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(MainActivity.this, "Liked"+ userId, Toast.LENGTH_SHORT).show();
             }
 
             @Override
@@ -110,7 +110,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-
         // Optionally add an OnItemClickListener
         flingContainer.setOnItemClickListener(new SwipeFlingAdapterView.OnItemClickListener() {
             @Override
@@ -119,7 +118,7 @@ public class MainActivity extends AppCompatActivity {
                 String userId = obj.getUserId();
                 oppUserId = userId;
                 checkProfile.setVisibility(View.VISIBLE);
-                Toast.makeText(MainActivity.this, "clicked", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(MainActivity.this, "clicked", Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -138,14 +137,13 @@ public class MainActivity extends AppCompatActivity {
                 System.out.println("Inside onDataChange (isConnectionMatch)");
 
                 if(dataSnapshot.exists()){
-                    Toast.makeText(MainActivity.this, "new Connection", Toast.LENGTH_LONG).show();
+                    Toast.makeText(MainActivity.this, "Matched Successful", Toast.LENGTH_LONG).show();
 
                     //when both of them swipe right for each other, create matches
                     usersDb.child(dataSnapshot.getKey()).child("connection").child("matches").child(currentUId).setValue(true);
                     usersDb.child(currentUId).child("connection").child("matches").child(dataSnapshot.getKey()).setValue(true);
                     System.out.println("Match should be created successfully");
                 }else{
-
                     System.out.println("dataSnapshot not exist");
                 }
             }
@@ -198,8 +196,10 @@ public class MainActivity extends AppCompatActivity {
             public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
                 if(dataSnapshot.exists() && !dataSnapshot.child("connection").child("nope").hasChild(currentUId) && !dataSnapshot.child("connection").child("yeps").hasChild(currentUId) && dataSnapshot.child("sex").getValue().toString().equals(oppUserSex)){
                     String profileImageUrl = "default";
-                    if(dataSnapshot.child("profileImageUrl").getValue().equals("default")){
+                    if(!dataSnapshot.child("profileImageUrl").getValue().equals("default")){
                         profileImageUrl = dataSnapshot.child("profileImageUrl").getValue().toString();
+                    }else{
+                        profileImageUrl = "default";
                     }
                     cards item = new cards(dataSnapshot.getKey(), dataSnapshot.child("name").getValue().toString(),profileImageUrl);
                     rowItems.add(item);

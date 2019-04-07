@@ -76,7 +76,7 @@ And if you do meet a friend when you’re on a date, introduce your date by the 
 When you’re in a new relationship, the bodily exploration may be the high point of every date that ends in a cozy corner or in one of your beds. But that doesn’t really help create a good relationship. Communication does.
 
 Try to sneak in a long conversation every now and then and learn about each other, likes, dislikes, interests and all. By doing this, it’ll help you figure the romantic compatibility and also help bring both of you closer on a level that’s beyond sexual attraction."
-        app:layout_constraintBottom_toTopOf="@+id/button"
+        app:layout_constraintBottom_toTopOf="@+id/back"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -89,6 +89,7 @@ Try to sneak in a long conversation every now and then and learn about each othe
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:text="Back"
+        android:background="#E3BAB3"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
